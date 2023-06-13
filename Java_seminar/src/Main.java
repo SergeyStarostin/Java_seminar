@@ -1,18 +1,50 @@
 import java.time.LocalTime;
+import java.util.Arrays;
 import java.util.Scanner;
+import java.io.*;
 
 public class Main 
 {
-    public static void main(String[] args) throws Exception 
-    {
-        task1();
-        task2();
-        task3();
-        task4();
+    public static void main(String[] args) throws Exception {
+        
+        try (Scanner in = new Scanner(System.in)) {
+            System.out.println("1) Ввод имени с консоли");
+            System.out.println("2) Вывод максимального количества 1 подряд");
+            System.out.println("3) Вывод заданного числа в конец массива");
+            System.out.println("4) Вывод самой длинной строки префикса");
+            System.out.println("5) Переставить слова в преждложении в обратном порядке");
+            System.out.println("6) Возведение числа А в степень В");
+            System.out.println("7) Набор команд для переведения числа А в В");
+            System.out.println("Ввыедите номер задачи: ");
+            int tasks = in.nextInt();
+            
+            switch(tasks){
+                case 1:
+                    task1();
+                    break;
+                case 2:
+                    task2();
+                    break;
+                case 3:
+                    task3();
+                    break;
+                case 4:
+                    task4();
+                    break;
+                case 5:
+                    task5();
+                    break;
+                case 6:
+                    task8();
+                    break;
+                case 7:
+                    task9();
+                    break;
+            }
+        }
     }
-
-    private static void task1() 
-    {
+    
+    private static void task1() {
 
     // Написать программу, которая запросит пользователя ввести <Имя> в консоли.
     // Получит введенную строку и выведет в консоль сообщение “Привет, <Имя>!”
@@ -49,10 +81,9 @@ public class Main
         }
     }
 
-    private static void task2() 
-    {
-        //Дан массив двоичных чисел, например [1,1,0,1,1,1], вывести
-        //максимальное количество подряд идущих 1.
+    private static void task2() {
+
+    //Дан массив двоичных чисел, например [1,1,0,1,1,1], вывести максимальное количество подряд идущих 1.
         
         int[] arr = {1,1,0,1,1,1};
         int count = 0;
@@ -66,8 +97,8 @@ public class Main
         System.out.println(max_count);
     }
 
-    private static void task3() 
-    {
+    private static void task3() {
+
     //Дан массив nums = [3,2,2,3] и число val = 3.
     //Если в массиве есть числа, равные заданному, нужно перенести эти элементы в конец массива.
     //Таким образом, первые несколько (или все) элементов массива должны быть отличны от заданного, а остальные - равны ему.
@@ -89,9 +120,9 @@ public class Main
 
     private static void task4() 
     {
-    // Напишите метод, который находит самую длинную строку общего префикса среди
-    // массива строк.
+    // Напишите метод, который находит самую длинную строку общего префикса среди массива строк.
     // Если общего префикса нет, вернуть пустую строку "".
+
         String[] lines = { "dom", "domovoy", "domashniy" };
         System.out.println(findPfx(lines));
         System.out.println(lines[0].substring(0, findPfx(lines)));
@@ -125,6 +156,66 @@ public class Main
         }
         return res;
     }
+
+    private static void task5() {
+
+        //Во фразе "Добро пожаловать на курс по Java" переставить слова в обратном порядке.
+
+        String sourceLn = "Welcome To Java Cource";
+        String[] splitLn = sourceLn.split(" ");
+        String outLn = "";
+        for (int i = splitLn.length - 1; i >= 0; i--) {
+            outLn = outLn + splitLn[i] + " ";
+        }
+        System.out.println(sourceLn);
+        System.out.println(outLn);
+    }
+
+    private static void task8() {
+
+    //Задан массив, например, nums = [1,7,3,6,5,6]. Написать программу, которая найдет индекс i для этого массива
+    //такой, что сумма элементов с индексами < i равна сумме элементов с индексами > i. 
+
+        int[] nums = {1, 7, 3, 6, 5, 6};
+        int leftSum = 0;
+        int rightSum = 0;
+        for (int i = 0; i < nums.length; i++) {
+            rightSum += nums[i];
+        }
+        for (int i = 0; i < nums.length; i++) {
+            rightSum -= nums[i];
+            if (leftSum == rightSum) {
+                System.out.println("Индекс: " + i);
+                return;
+            }
+            leftSum += nums[i];
+        }
+        System.out.println("Такой индекс не найден");
+    }
+
+    private static void task9() { 
+        
+    //Записать в файл следующие данные:
+    //Name Surname Age
+    //Kate Smith 20
+    //Paul Green 25
+    //Mike Black 23
+        
+        try {
+        FileWriter fileWriter = new FileWriter("data.txt");
+        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+        bufferedWriter.write("Name Surname Age");
+        bufferedWriter.newLine();
+        bufferedWriter.write("Kate Smith 20");
+        bufferedWriter.newLine();
+        bufferedWriter.write("Paul Green 25");
+        bufferedWriter.newLine();
+        bufferedWriter.write("Mike Black 23");
+        bufferedWriter.newLine();
+        bufferedWriter.close();
+        fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
-
-
