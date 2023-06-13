@@ -1,0 +1,8 @@
+.git
+.gitignore
+data.txt
+file.txt
+filenames.txt
+Java_seminar
+Java_seminar2
+Lection01
