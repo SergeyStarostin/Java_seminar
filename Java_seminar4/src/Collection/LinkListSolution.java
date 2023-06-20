@@ -3,8 +3,6 @@ package Collection;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
-import javax.lang.model.util.ElementScanner6;
-
 /*
 * Задание №1
 Реализовать консольное приложение, которое:
@@ -62,8 +60,9 @@ public class LinkListSolution {
 
     private static String InputUser(String message) {
         System.out.print(message + " -> ");
-        Scanner scannerNumber = new Scanner(System.in);
-        return scannerNumber.nextLine();
+        try (Scanner scannerNumber = new Scanner(System.in)) {
+            return scannerNumber.nextLine();
+        }
     }
 
     private static boolean isInt(String text) {
