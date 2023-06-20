@@ -1,6 +1,9 @@
 package Collection;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Scanner;
+import javax.lang.model.util.ElementScanner6;
 
 /*
 * Задание №1
@@ -18,22 +21,21 @@ text~num
 *  введенная была первой в списке, а первая - последней.
 3. Если введено revert, удаляет предыдущую введенную
 * строку из памяти.
-*
 * */
 public class LinkListSolution {
 
     private static LinkedList<String> list = new LinkedList<>();
 
-
     public static void run() {
-        boolean getiteration = true;
-        while (getiteration) {
-            String cmd = InputUser("Введите команду (EXIT/PRINT/LIST/REVERS/REVERS2)");
+        boolean getIteration = true;
+
+        while (getIteration) {
+            String cmd = InputUser("Enter the command");
             String[] cLine = cmd.toUpperCase().split("~");
             // 11111~5
             switch (cLine[0]) {
                 case "EXIT":
-                    getiteration = false;
+                    getIteration = false;
                     break;
                 case "PRINT":
                     System.out.println(list.get(Integer.parseInt(cLine[1])));
@@ -42,48 +44,21 @@ public class LinkListSolution {
                     while (list.size() > 0) {
                         System.out.println(list.pop());
                     }
-                case "REVERS":
-                    if (list.size() > 0) {
-                        Iterator<String> iterator = list.descendingIterator();
-                        while (iterator.hasNext()) {
-                            System.out.println(iterator.next());
-                        }
-                        list.removeLast();
-                    } else {
-                        System.out.println("Список пуст");
-                    }
                     break;
-                case "REVERS2":
-                    LinkedList<Integer> reversedList = reverseLinkedList(list);
-                    System.out.println("Перевернутый список: " + reversedList);
-
                 default:
                     if (cLine.length > 1) {
                         if (isInt(cLine[1])) {
                             adder(cLine, list);
+                        } else {
+                            list.addFirst(cLine[0]);
                         }
                     } else {
                         list.addFirst(cLine[0]);
                     }
-
                     break;
-
             }
         }
-
     }
-    private static LinkedList reverseLinkedList(LinkedList list) {
-        // Создаем новый пустой связный список
-        LinkedList reversedList = new LinkedList();
-        // Проходим по элементам исходного списка с конца к началу
-        for (int i = list.size() - 1; i >= 0; i--) {
-            // Добавляем каждый элемент в новый список
-            reversedList.add(list.get(i));
-        }
-        // Возвращаем перевернутый список
-        return reversedList;
-    }
-
 
     private static String InputUser(String message) {
         System.out.print(message + " -> ");
@@ -106,7 +81,6 @@ public class LinkListSolution {
             if (num > list.size()) {
                 for (int i = list.size() - num; i < num + 1; ++i) {
                     list.add(" ");
-
                 }
             }
             list.add(num, splitted[0]);

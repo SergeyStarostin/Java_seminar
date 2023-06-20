@@ -3,8 +3,6 @@ package BracketTest;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.HashMap;
-
-public class Tester {
 /*
 Написать программу, определяющую правильность расстановки скобок в выражении.
 Пример 1: a+(d*3) - истина
@@ -13,7 +11,10 @@ public class Tester {
 Пример 4: {a}[+]{(d*3)} - истина
 Пример 5: <{a}+{(d*3)}> - истина
 Пример 6: {a+]}{(d*3)} - ложь
- */
+*/
+
+public class Test2 {
+
     public static boolean validation(HashMap<String, Integer> open, HashMap<String, Integer> close, String line) {
         boolean res = true;
         Deque<String> stack = new ArrayDeque<>();

@@ -3,7 +3,7 @@ package HashMapTest;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
-public class Test {
+public class Test1 {
 
     //Integer[] intValue,String[] values
     public static HashMap<Integer,String> fill(){//String[] values
@@ -27,6 +27,4 @@ public class Test {
             }
         }
     }
-
-    
 }
