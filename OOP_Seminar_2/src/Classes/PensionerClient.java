@@ -1,11 +1,8 @@
 package Classes;
 
 public class PensionerClient extends Actor {
-    private int pensID;
-
     public PensionerClient(String name, int pensID) {
         super(name + " - пенсионер");
-        this.pensID = pensID;
     }
 
     @Override
