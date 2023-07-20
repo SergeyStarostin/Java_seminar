@@ -1,3 +1,4 @@
+import Classes.Actor;
 import Classes.Market;
 import Classes.OrdinaryClient;
 import Classes.PensionerClient;
