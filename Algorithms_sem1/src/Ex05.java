@@ -1,6 +1,6 @@
 
 
-public class Ex5 {
+public class Ex05 {
     public static void main(String[] args) {
         System.out.println("fb(10) = " + fiboLoop(10));
     }
