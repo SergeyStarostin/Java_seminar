@@ -1,3 +1,8 @@
 {
-    "java.debug.settings.onBuildFailureProceed": true
+    "java.debug.settings.onBuildFailureProceed": true,
+    "java.project.sourcePaths": [
+        "OOP_Seminar_2/src",
+        "Algorithms_sem2/src",
+        "Algorithms_sem3/src"
+    ]
 }
