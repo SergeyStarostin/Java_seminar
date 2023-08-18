@@ -83,7 +83,9 @@ public class LinkedList {
         }
     }
 
-    // Вывод списка
+    /**
+     * @apiNote Функция вывода списка на экран
+     */
     static void PrintLinkedList() {
         if (head == null) {
             System.out.println("[]");
